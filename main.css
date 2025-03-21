@@ -1,0 +1,113 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'poppins', sans-serif;
+}
+body{
+    display: flex;
+    align-items: center;
+    min-height: auto;
+    background-image:  url("C:\\Users\\magee\\OneDrive\\Documents\\web pro\\Pharmacy-and-Pathology-Lab-Tests.jpg");
+    text-decoration: none;
+    justify-content: center;
+}
+  
+section{
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+}
+.wrapper{
+    background-color: aliceblue;
+    width: 360px;
+    border-radius: 16px;
+    padding-top: 10px;
+    padding-left: 10px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 0 128px 0 rgba(0,0,0,0.1), 0 32px 64px -48px rgba(0,0,0,0.5);
+   
+}
+form{
+    padding: 25px;
+   
+}
+header{
+    font-size: 23px;
+    font-family: monospace;
+    font-weight: 600;
+    padding-bottom: 10px;
+    padding-left: 5px;
+    border-bottom: 1px solid #eee7e7;
+    color: #3c00a0;
+}
+form{
+    margin: 20px 0;  
+}
+.username{
+    background-color: #3c00a0;
+}
+form .error-text{
+    color: brown;
+    background: #f8d7da;
+    padding: 8px 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    text-align: center;
+    border: 1px solid #f5c6cb;
+}
+form .input input{
+    height: 35px;
+    width: 100x;
+    font-size: 10px;
+    padding: 0 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+}
+form .field{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+form .field input{
+    font-size: x-small;
+    outline: none;
+}
+.field:first-child{
+    margin-right: 10px;
+    width:185px
+}
+.field:last-child{
+    margin-right: 10px;
+    width:185px
+}
+form .field label{
+    margin-bottom: 2px;
+}
+form .field-but{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+form .field-but input{
+    flex-basis: 48%;
+    display: flex;
+    margin-top: 13px;
+    height: 35px;
+    border: none;
+    font-size: 15px;
+    font-weight: 600;
+    background: rgb(232, 70, 81);
+    border-radius: 20px;
+    border: 0;
+    outline: 0;
+    cursor: pointer;
+    transition: background 1s;
+}
+form .field-but input.disable{
+    background: #eee7e7;
+}

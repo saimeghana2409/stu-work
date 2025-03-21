@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labtest and Pharmacy management</title>
+    <link rel="stylesheet" href="bootstrap\css\bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+        <section>
+            <div class="wrapper">
+            <centre>
+                <header id="hh">
+                    Login as admin
+                </header>
+            </centre>
+            <form onsubmit="handleSubmit(event)" class="header" method="post">
+                <div class="field input">
+                    <label for="username", style="color: #3c00a0; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Username</label>
+                    <input type="text" id="username" name="username" placeholder="Enter username">
+                </div>
+                <div class="field input">
+                    <label for="password", style="color: #3c00a0; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Password</label> 
+                    <input type="password" id="password" name="password" placeholder="Enter password">
+                </div>
+            
+                <div class="field-but">
+                    <input type="submit" name="submit" id="login" style="display: inline-block; margin-right: 10px;" value="Login">
+                    <input type="submit" name="submit" id="sup" style="display: inline-block;" class="disable" value="Sign up">
+                </div>
+            </form>
+            </div>
+        </section>
+   <script>
+        let sup=document.getElementById("sup");
+        let login=document.getElementById("login");
+        let hh=document.getElementById("hh");
+        
+        login.onclick=function() {
+            hh.innerHTML="Login";
+            sup.classList.add("disable");
+            login.classList.remove("disable");
+
+        }
+        sup.onclick=function() {
+            hh.innerHTML="Sign up";
+            login.classList.add("disable");
+            sup.classList.remove("disable");
+
+        }
+       
+        let registeredUsers = [];
+
+        // Function to add user to the array
+        function addUser(email, password) {
+            registeredUsers.push({ email: email, password: password });
+        }
+
+        function handleLogin(email, password) {
+            for (let user of registeredUsers) {
+                if (user.email === email && user.password === password) {
+                    alert("Login successful!");
+                    window.location.href = "home.php";
+                    return;
+                }
+            }
+             //user doesn't exist then sign up
+             alert("User not found. Signing up...");
+            addUser(email, password);
+            alert("Sign up successful!");
+            window.location.href = "home.php";
+        }
+
+         // Function to handle form submission
+         function handleSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+            let email = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            // Check if it's a login or signup
+            if (event.submitter.id === "login") {
+                handleLogin(email, password);
+            }
+        }
+   </script>
+</body>
+</html>

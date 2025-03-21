@@ -1,39 +1,116 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1. 0">
-        <title>Labtest and Pharmacy management</title>
-        <link rel="stylesheet" href="dist/css/bootstrap.min.css">
-        <link rel="stylesheet" href="dist/css/main.css">
-    </head>
-    <body>
-        <div class="wrapper">
-            <section>
-                <centre>
-                    <header>
-                        Login form 
-                    </header>
-                </centre>
-                <form action="" class="header" method="post">
-                    <div class="field input">
-                        <label for="">Username</label>
-                        <input type="text" name="username"
-                        placeholder="provide username">
-                    </div>
 
-                    <div class="field input">
-                        <label for="">Password</label>
-                        <input type="text" name="username"
-                        placeholder="provide password">
-                    </div>
-                    <div class="field but">
-                        <input type="submit" name="submit"
-                        value="LOGIN">
-                    </div>
-                </form>
-            </section>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Labtest and Pharmacy management</title>
+    <link rel="stylesheet" href="bootstrap\css\bootstrap.min.css">
+    <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <section>
+        <div class="wrapper">
+            <center>
+                <header id="hh">
+                    Login
+                </header>
+            </center>
+            <form onsubmit="handleSubmit(event)" class="header" method="post" id="loginForm">
+                <div class="field input">
+                    <label for="email", style="color: #3c00a0; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Email</label>
+                    <input type="text" id="username" name="email" placeholder="Enter email">
+                </div>
+                <div class="field input">
+                    <label for="password", style="color: #3c00a0; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter password">
+                </div>
+                <div class="admin">
+                    <a href="admin.html">Login as admin</a>
+
+                </div>
+                <div class="field-but">
+                    <input type="submit" name="submit" id="login" style="display: inline-block; margin-right: 10px;" value="Login">
+                    <input type="button" name="submit" id="sup" style="display: inline-block;" class="disable" value="Sign up" onclick="switchToSignup()">
+                </div>
+            </form>
+            <form onsubmit="handleSignup(event)" class="header" method="post" id="signupForm" style="display: none;">
+                <div class="field input">
+                    <label for="signup_email", style="color: #3c00a0; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Email</label>
+                    <input type="text" id="signup_email" name="email" placeholder="Enter email">
+                </div>
+                <div class="field input">
+                    <label for="signup_password", style="color: #3c00a0; font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;">Password</label>
+                    <input type="password" id="signup_password" name="password" placeholder="Enter password">
+                </div>
+                <div class="field-but">
+                    <input type="submit" name="submit" id="signup" style="display: inline-block; margin-right: 10px;" value="Sign up">
+                    <input type="button" name="submit" id="back" style="display: inline-block;" class="disable" value="Back to Login" onclick="switchToLogin()">
+                </div>
+            </form>
         </div>
-    </body>
+    </section>
+    <script>
+        // Array to store registered users
+        let registeredUsers = [];
+
+        // Function to add user to the array
+        function addUser(email, password) {
+            registeredUsers.push({ email: email, password: password });
+        }
+
+        // Function to handle login
+        function handleLogin(email, password) {
+            for (let user of registeredUsers) {
+                if (user.email === email && user.password === password) {
+                    alert("Login successful!");
+                    window.location.href = "index.html";
+                    return;
+                }
+            }
+            //user doesn't exist then sign up
+            alert("User not found. Signing up...");
+            addUser(email, password);
+            alert("Sign up successful!");
+            window.location.href = "index.html";
+        }
+
+        // Function to handle signup
+        function handleSignup(event) {
+            event.preventDefault(); // Prevent form submission
+            let email = document.getElementById("signup_email").value;
+            let password = document.getElementById("signup_password").value;
+            addUser(email, password);
+            alert("Sign up successful!");
+            window.location.href = "index.html";
+        }
+
+        // Function to handle form submission
+        function handleSubmit(event) {
+            event.preventDefault(); // Prevent form submission
+            let email = document.getElementById("username").value;
+            let password = document.getElementById("password").value;
+
+            // Check if it's a login or signup
+            if (event.submitter.id === "login") {
+                handleLogin(email, password);
+            }
+        }
+
+        // Function to switch to signup form
+        function switchToSignup() {
+            document.getElementById("hh").innerHTML = "Sign up";
+            document.getElementById("signupForm").style.display = "block";
+            document.getElementById("loginForm").style.display = "none";
+        }
+
+        // Function to switch to login form
+        function switchToLogin() {
+            document.getElementById("hh").innerHTML = "Login";
+            document.getElementById("loginForm").style.display = "block";
+            document.getElementById("signupForm").style.display = "none";
+        }
+    </script>
+</body>
 </html>
