@@ -1,0 +1,42 @@
+{% load static %}<!-- start banner Area -->
+{% include 'adminheader.html' %}
+			<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Customer Details
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+<div class="m-3">
+	<table class="table table-bordered">
+		<thead>
+			<tr class="table-primary">
+				<th>Id</th>
+				<th>Full Name</th>
+				<th>Email</th>
+				<th>Mobile</th>
+				<th>Address</th>
+				<th>Pincode</th>
+				<th>Action</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for x in y %}
+		<tr>
+		    <td>{{x.id}}</td>
+			<td>{{x.name}}</td>
+			<td>{{x.email}}</td>
+			<td>{{x.mobile}}</td>
+			<td>{{x.address}}</td>
+			<td>{{x.pincode}}</td>
+		 </tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% include 'footer.html' %}

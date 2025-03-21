@@ -1,0 +1,39 @@
+{% load static %}<!-- start banner Area -->
+{% include 'adminheader.html' %}
+			<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row d-flex align-items-center justify-content-center">
+						<div class="about-content col-lg-12">
+							<h1 class="text-white">
+								Contact
+							</h1>
+						</div>
+					</div>
+				</div>
+			</section>
+<div class="m-3">
+	<table class="table table-bordered">
+		<thead>
+			<tr class="table-primary">
+				<th>Id</th>
+				<th>Full Name</th>
+				<th>Email</th>
+				<th>Subject</th>
+				<th>Message</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for a in x %}
+		<tr>
+		    <td>{{a.id}}</td>
+			<td>{{a.name}}</td>
+			<td>{{a.email}}</td>
+			<td>{{a.subject}}</td>
+			<td>{{a.message}}</td>
+		 </tr>
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% include 'footer.html' %}
